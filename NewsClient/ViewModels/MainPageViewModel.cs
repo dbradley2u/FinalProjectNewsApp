@@ -47,6 +47,7 @@ namespace NewsClient.ViewModels
             }
         }
 
+        //Video Demo Filter Properties
         string _FilterString = string.Empty;
         public string FilterString { get { return _FilterString; } set { Set(ref _FilterString, value); } }
 
@@ -71,6 +72,8 @@ namespace NewsClient.ViewModels
             Filter();
         }
 
+
+        //Video Demo Filter Properties - OnNavigatedFromAsync
         public override Task OnNavigatedFromAsync(IDictionary<string, object> suspensionState, bool suspending)
         {
             if (suspending)

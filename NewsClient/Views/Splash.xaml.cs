@@ -11,6 +11,7 @@ namespace NewsClient.Views
         public Splash(SplashScreen splashScreen)
         {
             InitializeComponent();
+            //The only argument passed in here to the Splash View is the SplashScreen
             Window.Current.SizeChanged += (s, e) => Resize(splashScreen);
             RingStoryboard.Begin();
             Resize(splashScreen);

@@ -33,16 +33,19 @@ namespace NewsClient.Views
 
         private async void RenderFavorites(List<NewsService.Article> list)
         {
-            //var existing = MyHamburgerMenu.PrimaryButtons.Where(x => Equals("Favorite", (x.Content as StackPanel).Tag));
-            //foreach (var item in existing.ToArray())
-            //{
-            //    MyHamburgerMenu.PrimaryButtons.Remove(item);
-            //}
-            //var favorites = list ?? await _dataService.GetFavoritesAsync();
-            //foreach (var item in favorites)
-            //{
-            //    MyHamburgerMenu.PrimaryButtons.Add(MakeButton(item));
-            //}
+            //Video Demo User Favorites - Uncommented section below
+
+            //All Favorites are cleared out, then favorites readded from dataService
+            var existing = MyHamburgerMenu.PrimaryButtons.Where(x => Equals("Favorite", (x.Content as StackPanel).Tag));
+            foreach (var item in existing.ToArray())
+            {
+                MyHamburgerMenu.PrimaryButtons.Remove(item);
+            }
+            var favorites = list ?? await _dataService.GetFavoritesAsync();
+            foreach (var item in favorites)
+            {
+                MyHamburgerMenu.PrimaryButtons.Add(MakeButton(item));
+            }
         }
 
         private HamburgerButtonInfo MakeButton(NewsService.Article article)
@@ -68,6 +71,7 @@ namespace NewsClient.Views
             stack.Children.Add(block);
             var button = new HamburgerButtonInfo
             {
+                //Command buttons only have tap events
                 ButtonType = HamburgerButtonInfo.ButtonTypes.Command,
                 Content = stack,
             };

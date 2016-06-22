@@ -11,11 +11,13 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <!-- Video Demo - Animates the RingSegment below. -->
         <Storyboard x:Name="RingStoryboard">
             <DoubleAnimationUsingKeyFrames Completed="DoubleAnimationUsingKeyFrames_Completed"
                                            EnableDependentAnimation="True"
                                            Storyboard.TargetName="MyRingSlice"
                                            Storyboard.TargetProperty="(RingSegment.EndAngle)">
+                <!-- End anles to animate -->
                 <EasingDoubleKeyFrame KeyTime="0" Value="0" />
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="55" />
                 <EasingDoubleKeyFrame KeyTime="0:0:3" Value="359.9999" />
@@ -36,6 +38,9 @@
             <Viewbox x:Name="MyImage" Width="{Binding ActualWidth, ElementName=MyCanvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=MyCanvas, Mode=OneWay}">
                 <Grid>
                     <Image Source="ms-appx:///Assets/SplashScreen.png" />
+                    <!-- Loading RingSegment loaded over top of the Splash Screen image.
+                         RingSegment is located in the Controls folder. 
+                         Must be animated in the RingStoryboard above.-->
                     <Controls:RingSegment x:Name="MyRingSlice" HorizontalAlignment="Center"
                                           VerticalAlignment="Center" EndAngle="200"
                                           Fill="{StaticResource ExtendedSplashForeground}"

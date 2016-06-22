@@ -16,6 +16,7 @@ namespace NewsClient
         public App()
         {
             InitializeComponent();
+            //Splash screen with loading image set up here
             SplashFactory = (e) => new Views.Splash(e);
             Template10.Services.LoggingService.LoggingService.Enabled = true;
 
@@ -56,12 +57,14 @@ namespace NewsClient
         // runs only when not restored from state
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
+            //Video Demo - Delay, show splash screen
             await Task.Delay(3500);
 
             var param = string.Empty;
             var protocolArgs = args as ProtocolActivatedEventArgs;
             if (protocolArgs != null)
             {
+                //Parse out query string, get the filter value, and set it to param; then pass param to the View
                 var uri = protocolArgs.Uri;
                 var decoder = new Windows.Foundation.WwwFormUrlDecoder(uri.Query);
                 param = decoder.GetFirstValueByName("filter");
